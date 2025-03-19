@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Exercise 3</title>
+
+        <style>
+            body {
+                font-family: sans-serif;
+                margin: 0;
+            }
+            .container {
+                display: flex;
+                min-height: 100vh;
+                align-items: stretch;
+            }
+            .column {
+                background: goldenrod;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                flex: 1;
+            }
+            button {
+                padding: 10px 20px;
+                background: white;
+                border: none;
+                cursor: pointer;
+                font-size: 1rem;
+                margin-top: 20px;
+            }
+            button:active {
+                background: lightgray;
+            }
+            img {
+                width: 300px;
+                height: 300px;
+                border-radius: 60%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="column" id="column1">
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt-ZlrWnP0-5x3-H58HTNBLs8Y81C5Q2wf8Q&s"
+                    alt="columnimage"
+                />
+                <h1 id="heading1">Hello</h1>
+                <button id="button1" onclick="changeColumn1()">Change Me</button>
+            </div>
+            <div class="column" id="column2">
+                <img
+                    src="https://cdn5.vectorstock.com/i/1000x1000/83/99/cute-earth-map-vector-42468399.jpg"
+                    alt="columnimage2"
+                />
+                <h1 id="heading2">World</h1>
+                <button id="button2" onclick="changeColumn2()">Change Me</button>
+            </div>
+        </div>
+
+        <script>
+            function changeColumn1() {
+                document.getElementById("column1").style.backgroundColor = "maroon";
+                document.getElementById("heading1").style.color = "white";
+                document.getElementById("button1").innerText = "Changed";
+            }
+
+            function changeColumn2() {
+                document.getElementById("column2").style.backgroundColor = "navy";
+                document.getElementById("heading2").style.color = "orange";
+                document.getElementById("button2").innerText = "Changed";
+            }
+        </script>
+    </body>
+</html>
