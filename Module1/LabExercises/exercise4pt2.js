@@ -1,4 +1,4 @@
-// Greeting Funciton
+// Greeting Function
 function greet(name) {
     console.log("Hello " + name);
 }
