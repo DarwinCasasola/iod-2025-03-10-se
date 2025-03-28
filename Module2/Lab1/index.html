@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="A website to learn HTML" />
+        <meta name="keywords" content="HTML, CSS, JavaScript" />
+        <meta name="author" content="Your Name" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>My HTML Learning Journey</title>
+        <style>
+            table,
+            th,
+            td {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="form.html">Form</a>
+            </nav>
+        </header>
+
+        <main>
+            <h1>My HTML Learning Journey</h1>
+            <article>
+                <h2>Learning elements - div, span, p, pre, ul, li, ol, article</h2>
+
+                <!-- Divs -->
+                <div>HTML</div>
+                <div>CSS</div>
+                <div>JavaScript</div>
+
+                <!-- Spans -->
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+
+                <!-- Paragraph and Pre -->
+                <p>p represents paragraph without preserving spacing</p>
+                <pre>
+        Text in         a pre element
+        is displayed in a fixed-width
+        font, and it preserves
+        both      spaces and
+        line breaks
+      </pre
+                >
+
+                <!-- Lists -->
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <li>Web Development</li>
+                </ul>
+
+                <ol>
+                    <li>Learn HTML</li>
+                    <li>Learn CSS</li>
+                    <li>Learn JavaScript</li>
+                </ol>
+
+                <!-- Nested List -->
+                <ol>
+                    <li>
+                        Learn HTML
+                        <ul>
+                            <li>HTML Basics</li>
+                            <li>HTML Forms</li>
+                        </ul>
+                    </li>
+                </ol>
+            </article>
+
+            <!-- Table Section -->
+            <article>
+                <h2>Learning Tables</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>First header</th>
+                            <th>Second header</th>
+                            <th>Third header</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>First cell - first row</td>
+                            <td>Second cell - first row</td>
+                            <td>Third cell - first row</td>
+                        </tr>
+                        <tr>
+                            <td>First cell - second row</td>
+                            <td>Second cell - second row</td>
+                            <td>Third cell - second row</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+
+            <!-- Image, Video, Audio Section -->
+            <article>
+                <h2>Learning Media Elements</h2>
+
+                <!-- Image -->
+                <img src="assets/IMG_6542.jpg" alt="MyImage" width="400" height="400" />
+                <img src="assets/html_lab_image.jpg" alt="HTML Image" width="400" height="400" />
+
+                <!-- Video -->
+                <video autoplay loop muted width="250">
+                    <source src="assets/flower.webm" type="video/webm" />
+                    Sorry, your browser doesn't support embedded videos.
+                </video>
+
+                <!-- Audio -->
+                <figure>
+                    <audio controls src="assets/t-rex-roar.mp3">
+                        Your browser does not support the <code>audio</code> element.
+                    </audio>
+                    <figcaption>Audio: T-Rex Roar</figcaption>
+                </figure>
+            </article>
+        </main>
+
+        <footer>Copyright &copy; 2024</footer>
+    </body>
+</html>
