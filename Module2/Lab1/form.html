@@ -77,5 +77,45 @@
         </main>
 
         <footer>Copyright &copy; 2024</footer>
+
+        <script>
+            // Get the form element
+            const form = document.getElementById("profileForm");
+
+            form.addEventListener("submit", function (event) {
+                event.preventDefault(); // Prevent the form from submitting normally
+
+                // Get form data
+                const formData = new FormData(form);
+
+                // Convert form data to a plain object
+                const dataObject = {};
+                formData.forEach((value, key) => {
+                    // Handle multiple values for the same key (like checkboxes)
+                    if (dataObject[key]) {
+                        dataObject[key] = [].concat(dataObject[key], value);
+                    } else {
+                        dataObject[key] = value;
+                    }
+                });
+
+                // Send the data as JSON to the server
+                fetch("http://localhost:3000/profile", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(dataObject) // Send the data as JSON
+                })
+                    .then((response) => response.json()) // Parse JSON response
+                    .then((data) => {
+                        console.log("Success:", data);
+                        alert("Profile submitted successfully!");
+                    })
+                    .catch((error) => {
+                        console.error("Error:", error);
+                    });
+            });
+        </script>
     </body>
 </html>
