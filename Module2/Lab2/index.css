@@ -1,0 +1,143 @@
+/* I. Selectors */
+article {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.style-me1 {
+    color: red;
+}
+
+#style-me2 {
+    color: blue;
+}
+
+.style-me1#style-me2 {
+    color: purple;
+}
+
+.by p {
+    background-color: red;
+}
+
+.my-children-are-styled > p {
+    background-color: lightgreen;
+}
+
+/* II. Box model and common properties */
+.box {
+    background-color: lightblue;
+    margin: 20px;
+    padding: 10px 20px;
+    width: 300px;
+    height: 200px;
+    border: 10px thick solid #333;
+    box-sizing: border-box;
+    overflow: auto;
+    outline: 10px solid red;
+    border-radius: 15px;
+    background-image: url("assets/img1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.box {
+    margin: 10px 20px 30px 40px;
+    padding: 15px;
+}
+
+/* III. Positioning */
+.position-absolute {
+    position: absolute;
+    top: 0;
+    background-color: rgba(255, 0, 0, 0.3);
+}
+
+.position-relative {
+    position: relative;
+    background-color: rgba(0, 255, 0, 0.3);
+}
+
+.position-absolute {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.position-sticky {
+    position: sticky;
+    top: 0;
+    background-color: rgba(0, 0, 255, 0.5);
+    padding: 10px;
+    color: white;
+}
+
+/* IV. Styling text */
+.text-style {
+    color: #333;
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: 700;
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+    letter-spacing: 1px;
+    word-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+.dm-serif-text-regular {
+    font-family: "DM Serif Text", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.dm-serif-text-regular-italic {
+    font-family: "DM Serif Text", serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+/* V. Styling links */
+a,
+a:link {
+    color: blue;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+a:hover,
+a:active,
+a:focus {
+    color: darkblue;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: purple;
+    font-style: italic;
+}
+
+/* VI. calc() */
+.calc-style {
+    width: 100vw;
+    background-color: lightgray;
+}
+
+.calc-style {
+    width: calc(100vw - 100px);
+}
+
+.fixed-width-col {
+    width: 350px;
+    display: inline-block;
+}
+
+.fluid-col {
+    display: inline-block;
+    width: calc(100% - 350px);
+}
