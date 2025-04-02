@@ -1,0 +1,116 @@
+/* Basic Styles */
+body {
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+    color: purple;
+}
+
+.background-1 {
+    background: #68b0ab;
+}
+
+.background-2 {
+    background: #8fc0a9;
+}
+
+.background-3 {
+    background: #c8d5b9;
+}
+
+.background-4 {
+    background: #faf3dd;
+}
+
+.m-20 {
+    margin: 20px;
+}
+
+.h-80 {
+    height: 80px;
+}
+
+.h-400 {
+    height: 400px;
+}
+
+.w-80 {
+    width: 80px;
+}
+
+/* LAB PT 2: Basic Flexbox */
+.flex-container {
+    display: flex;
+    gap: 20px;
+}
+
+.flex-item-1,
+.flex-item-2,
+.flex-item-3,
+.flex-item-4 {
+    flex: 1; /* Each item will take equal space */
+}
+
+/* LAB PT 3: Centering with Flexbox */
+.flex-center {
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+}
+
+/* LAB PT 4: Assigning Leftover Space */
+.flex-space-between {
+    display: flex;
+    justify-content: space-between; /* Push items to left and right with space in the middle */
+}
+
+/* LAB PT 5: Wrapping Items */
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap onto the next line */
+}
+
+.flex-basis-item-50 {
+    flex-basis: 50%; /* Each item will take 50% of the width */
+}
+
+/* LAB PT 6: Changing Direction */
+.flex-container {
+    display: flex;
+    flex-direction: row; /* Default direction (horizontal) */
+}
+
+/* LAB PT 7: Flexbox for Horizontal Navigation */
+.flex-menu {
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    gap: 5px;
+    list-style-type: none;
+    padding: 10;
+    padding-left: 0;
+    margin: 0;
+}
+
+.flex-menu .first-item {
+    order: -1; /* Move Home to the first position */
+}
+
+.flex-menu li {
+    flex-grow: 0;
+    text-align: left; /* Align text to the left */
+}
+
+.flex-menu .first-item {
+    order: -1; /* Move Home to the first position */
+}
+.flex-menu .fifth-item {
+    order: 5; /* Move Contact to the last position */
+}
+.flex-menu li a {
+    display: block; /* Make links take up the full list item space */
+    padding: 10px;
+    text-align: left;
+}
