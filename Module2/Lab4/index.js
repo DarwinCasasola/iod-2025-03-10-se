@@ -23,3 +23,29 @@ document.querySelector("form").addEventListener("submit", function (event) {
         alert("Your message has been sent!");
     }
 });
+// Get all the gallery images
+const images = document.querySelectorAll(".gallery img"); // Make sure the gallery has images with <img> tags
+const modal = document.getElementById("modal"); // The modal container
+const modalImage = document.getElementById("modal-image"); // The <img> element inside the modal
+const closeBtn = document.getElementById("close-modal"); // The close button inside the modal
+
+// When an image is clicked, show the modal
+images.forEach((image) => {
+    image.addEventListener("click", function () {
+        modal.style.display = "flex"; // Show the modal (use flexbox for centering)
+        modalImage.src = this.src; // Set the src of the modal image to the clicked image's src
+    });
+});
+
+// Close the modal when the close button is clicked
+closeBtn.addEventListener("click", function () {
+    modal.style.display = "none"; // Hide the modal when the close button is clicked
+});
+
+// Optionally, close the modal when clicking outside the modal image
+window.addEventListener("click", function (event) {
+    if (event.target === modal) {
+        // If the user clicks outside the modal content (background)
+        modal.style.display = "none"; // Close the modal
+    }
+});
