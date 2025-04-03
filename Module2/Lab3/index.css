@@ -110,7 +110,7 @@ a {
     order: 5; /* Move Contact to the last position */
 }
 .flex-menu li a {
-    display: block; /* Make links take up the full list item space */
+    display: flex; /* Make links take up the full list item space */
     padding: 10px;
     text-align: left;
 }
