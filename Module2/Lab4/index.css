@@ -4,6 +4,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+.personalstory h2 {
+    color: white;
+}
 
 body {
     font-family: Arial, sans-serif;
@@ -11,11 +14,25 @@ body {
     padding: 20px;
     color: #333;
 }
-
+#myname {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+}
+#contactme {
+    background-color: #800000; /* Maroon background */
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
 h1,
-h2,
-h3 {
+h2 {
     color: #800000; /* Maroon color */
+    text-align: center;
+}
+h3 {
+    color: solid gold;
 }
 
 a {
@@ -68,7 +85,7 @@ nav ul li a {
 .profile-img {
     width: 200px;
     height: 200px;
-    border-radius: 50%; /* Circular profile image */
+    border-radius: 60%; /* Circular profile image */
     margin-bottom: 20px;
     object-fit: cover;
 }
@@ -102,10 +119,11 @@ nav ul li a {
     border: 3px solid gold; /* Gold border */
 }
 
-#projects h2 {
+#projects h3 {
     text-align: center;
     font-size: 2em;
     margin-bottom: 30px;
+    color: rgb(255, 204, 0);
 }
 
 .project-list {
@@ -237,6 +255,6 @@ section {
     }
 
     .project-item {
-        width: 30%;
+        width: 60%;
     }
 }
