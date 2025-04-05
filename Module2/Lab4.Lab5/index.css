@@ -1,0 +1,260 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.personalstory h2 {
+    color: white;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+    color: #333;
+}
+#myname {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+}
+#contactme {
+    background-color: #800000; /* Maroon background */
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+h1,
+h2 {
+    color: #800000; /* Maroon color */
+    text-align: center;
+}
+h3 {
+    color: solid gold;
+}
+
+a {
+    text-decoration: none;
+    color: #003366; /* Navy color */
+    font-weight: bold;
+}
+
+a:hover {
+    color: #800000; /* Maroon on hover */
+}
+
+/* Header Styles */
+header {
+    background-color: #003366; /* Navy background for header */
+    padding: 20px 0;
+    border: 3px solid gold; /* Gold border */
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+nav ul li a {
+    color: #fff;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+/* Hero Section */
+#hero {
+    background-color: #800000; /* Maroon background for hero section */
+    color: #fff;
+    padding: 40px 0;
+    text-align: center;
+    border: 3px solid gold; /* Gold border */
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.profile-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 60%; /* Circular profile image */
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+#hero h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+#hero p {
+    font-size: 1.2em;
+}
+
+/* About Me Section */
+#about {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #fff;
+    border: 3px solid gold; /* Gold border */
+}
+
+#about h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* Projects Section */
+#projects {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    border: 3px solid gold; /* Gold border */
+}
+
+#projects h3 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: rgb(255, 204, 0);
+}
+
+.project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.project-item {
+    background-color: #003366; /* Navy background for project items */
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    text-align: center;
+}
+
+.project-item a {
+    color: #fff;
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+.project-item a:hover {
+    color: #ff6347; /* Tomato red on hover */
+}
+
+/* Contact Section */
+#contact {
+    padding: 40px 20px;
+    background-color: #800000; /* Maroon background for contact */
+    color: #fff;
+    text-align: center;
+    border: 3px solid gold; /* Gold border */
+}
+
+#contact h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+#contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+#contact input,
+#contact textarea {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#contact button {
+    background-color: #003366; /* Navy background for the button */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#contact button:hover {
+    background-color: #800000; /* Maroon on hover */
+}
+
+/* Footer Styles */
+footer {
+    background-color: #003366; /* Navy background for footer */
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    border: 3px solid gold; /* Gold border */
+}
+
+footer p {
+    margin-bottom: 10px;
+}
+
+footer ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+footer ul li {
+    list-style: none;
+}
+
+footer ul li a {
+    color: #fff;
+}
+
+footer ul li a:hover {
+    color: #800000; /* Maroon on hover */
+}
+
+/* Flexbox Layout Adjustments */
+section {
+    margin: 20px 0;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    /* Adjust layout for larger screens */
+    .hero-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: left;
+    }
+
+    .profile-img {
+        margin-right: 20px;
+        width: 250px;
+        height: 250px;
+    }
+
+    .project-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .project-item {
+        width: 60%;
+    }
+}
