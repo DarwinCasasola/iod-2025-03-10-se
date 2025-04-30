@@ -9,7 +9,7 @@ let car = {
 };
 
 // a) Wrapping in a function
-setTimeout(() => car.description(), 200); // ✅ works
+setTimeout(() => car.description(), 200); //
 
 // b) Clone and override year
 let newerCar = { ...car, year: 2025 };
@@ -20,7 +20,7 @@ car.description(); // Porsche 911 from 1964
 
 // d) Using bind to lock `this`
 let boundDescription = car.description.bind(car);
-setTimeout(boundDescription, 400); // ✅ works even when passed directly
+setTimeout(boundDescription, 400); //
 
 // e) Clone again and change model
 let anotherCar = { ...car, model: "Taycan" };
