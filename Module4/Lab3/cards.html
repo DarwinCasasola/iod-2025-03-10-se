@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Dynamic Cards Lab</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                padding: 20px;
+            }
+
+            .card {
+                border: 1px solid #ccc;
+                padding: 15px;
+                margin: 10px;
+                border-radius: 8px;
+                background-color: #f9f9f9;
+                width: 200px;
+            }
+
+            .card img {
+                max-width: 100%;
+                border-radius: 4px;
+            }
+
+            .container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Exercise 2: Cards from Array</h2>
+        <div id="user-cards" class="container"></div>
+
+        <h2>Exercise 3: Artist Portfolio</h2>
+        <div id="artist-profile" class="container"></div>
+
+        <script>
+            // Exercise 1 - Dynamic card creation
+            function addCard(containerId, content) {
+                const container = document.getElementById(containerId);
+                const card = document.createElement("div");
+                card.className = "card";
+                card.innerHTML = content;
+                container.appendChild(card);
+            }
+
+            // Exercise 2 - User cards from array
+            const data = [
+                { name: "bob", age: 23 },
+                { name: "alice", age: 39 }
+            ];
+
+            data.forEach((user) => {
+                addCard("user-cards", `<strong>Name:</strong> ${user.name}<br><strong>Age:</strong> ${user.age}`);
+            });
+
+            // Exercise 3 - Artist portfolio
+            const artist = {
+                name: "Van Gogh",
+                portfolio: [
+                    {
+                        title: "portrait",
+                        url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436532/1671316/main-image"
+                    },
+                    {
+                        title: "sky",
+                        url: "https://mymodernmet.com/wp/wp-content/uploads/2020/11/White-house-night-van-goh-worldwide-2.jpg"
+                    }
+                ]
+            };
+
+            addCard("artist-profile", `<h3>${artist.name}</h3>`);
+
+            artist.portfolio.forEach((item) => {
+                addCard(
+                    "artist-profile",
+                    `<strong>${item.title}</strong><br><img src="${item.url}" alt="${item.title}" />`
+                );
+            });
+
+            // Optional extension: multiple artists
+            /*
+    const artists = [
+      {
+        name: "Van Gogh",
+        portfolio: [...]
+      },
+      {
+        name: "Picasso",
+        portfolio: [...]
+      }
+    ];
+    */
+        </script>
+    </body>
+</html>
