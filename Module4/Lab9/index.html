@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>eCharts - Fake Store Categories</title>
+        <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+    </head>
+    <body>
+        <!-- Chart container -->
+        <div id="main" style="width: 900px; height: 600px"></div>
+
+        <script>
+            // Initialize the echarts instance first
+            let myChart = echarts.init(document.getElementById("main"));
+
+            // Initial chart config (will update it after fetching data)
+            let options = {
+                title: { text: "Fake Store Categories" },
+                tooltip: {},
+                xAxis: {
+                    type: "category",
+                    data: []
+                },
+                yAxis: {
+                    type: "value"
+                },
+                series: [
+                    {
+                        name: "# products",
+                        type: "bar",
+                        data: []
+                    }
+                ]
+            };
+
+            // Fetch product data from Fake Store API
+            fetch("https://fakestoreapi.com/products")
+                .then((response) => response.json())
+                .then((products) => {
+                    // Count products per category
+                    const categoryCounts = {};
+
+                    products.forEach((product) => {
+                        const category = product.category;
+                        categoryCounts[category] = (categoryCounts[category] || 0) + 1;
+                    });
+
+                    // Prepare data for chart
+                    const categories = Object.keys(categoryCounts);
+                    const counts = Object.values(categoryCounts);
+
+                    // Update chart options
+                    options.xAxis.data = categories;
+                    options.series[0].data = counts;
+
+                    // Apply updated options to chart
+                    myChart.setOption(options);
+                });
+        </script>
+    </body>
+</html>
