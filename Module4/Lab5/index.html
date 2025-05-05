@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Live News Feed</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                padding: 20px;
+            }
+
+            #news-container {
+                margin-top: 20px;
+            }
+
+            .news-item {
+                border-bottom: 1px solid #ccc;
+                padding: 10px 0;
+            }
+
+            .news-title {
+                font-weight: bold;
+                font-size: 1.2em;
+            }
+
+            .news-content {
+                margin-top: 5px;
+            }
+
+            .form-group {
+                margin-bottom: 10px;
+            }
+
+            #stop-button {
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Submit a News Item</h2>
+        <div>
+            <div class="form-group">
+                <input type="text" id="news-title" placeholder="Title" />
+            </div>
+            <div class="form-group">
+                <textarea id="news-content" placeholder="Content"></textarea>
+            </div>
+            <button onclick="addNews()">Add News</button>
+        </div>
+
+        <button id="stop-button" onclick="stopUpdates()">Stop News Updates</button>
+
+        <h2>Latest News</h2>
+        <div id="news-container"></div>
+
+        <script>
+            let news = [
+                { id: 1, title: "Election Results", content: "Newly elected minister..." },
+                { id: 2, title: "Sporting Success", content: "World Cup winners..." },
+                { id: 3, title: "Tornado Warning", content: "Residents should prepare..." }
+            ];
+
+            const newsContainer = document.getElementById("news-container");
+
+            function renderNews() {
+                newsContainer.innerHTML = ""; // Clear current news
+                news.forEach((item) => {
+                    const newsDiv = document.createElement("div");
+                    newsDiv.className = "news-item";
+                    newsDiv.innerHTML = `
+          <div class="news-title">${item.title}</div>
+          <div class="news-content">${item.content}</div>
+        `;
+                    newsContainer.appendChild(newsDiv);
+                });
+            }
+
+            // Add new news item from inputs
+            function addNews() {
+                const titleInput = document.getElementById("news-title");
+                const contentInput = document.getElementById("news-content");
+                const title = titleInput.value.trim();
+                const content = contentInput.value.trim();
+
+                if (title && content) {
+                    const newId = news.length ? news[news.length - 1].id + 1 : 1;
+                    news.push({ id: newId, title, content });
+
+                    // Clear input fields
+                    titleInput.value = "";
+                    contentInput.value = "";
+                } else {
+                    alert("Please enter both title and content.");
+                }
+            }
+
+            // Interval to refresh news every 5 seconds
+            let intervalId = setInterval(renderNews, 5000);
+            renderNews(); // Initial load
+
+            function stopUpdates() {
+                clearInterval(intervalId);
+                alert("News updates stopped.");
+            }
+        </script>
+    </body>
+</html>
