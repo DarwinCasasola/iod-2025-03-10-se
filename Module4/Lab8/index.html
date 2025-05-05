@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Luxon Date Tasks</title>
+        <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                padding: 30px;
+                line-height: 1.6;
+            }
+            h2 {
+                color: #333;
+            }
+            .result {
+                margin-bottom: 15px;
+                padding: 10px;
+                background: #f9f9f9;
+                border-left: 4px solid #007bff;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Luxon Date Tasks</h1>
+
+        <div id="output"></div>
+
+        <script>
+            const { DateTime, Interval } = luxon;
+            const output = document.getElementById("output");
+
+            function showResult(label, value) {
+                const div = document.createElement("div");
+                div.className = "result";
+                div.innerHTML = `<strong>${label}</strong><br>${value}`;
+                output.appendChild(div);
+            }
+
+            // 1. Days between birthdate and now
+            const birthdate = DateTime.fromISO("1998-10-30");
+            const now = DateTime.now();
+            const interval = Interval.fromDateTimes(birthdate, now);
+            const daysBetween = Math.floor(interval.length("days"));
+            showResult("1️⃣ Days between your birthdate and now:", `${daysBetween} days`);
+
+            // 2. Years, months, days between birthdate and now
+            const diff = now.diff(birthdate, ["years", "months", "days"]).toObject();
+            showResult(
+                "2️⃣ Time since birthdate:",
+                `${Math.floor(diff.years)} years, ${Math.floor(diff.months)} months, ${Math.floor(diff.days)} days`
+            );
+
+            // 3. Closest date to today
+            const date1 = DateTime.fromISO("2024-12-25");
+            const date2 = DateTime.fromISO("2025-06-01");
+            const diff1 = Math.abs(now.diff(date1).as("days"));
+            const diff2 = Math.abs(now.diff(date2).as("days"));
+            const closest = diff1 < diff2 ? date1 : date2;
+            showResult("3️⃣ Closest date to today:", closest.toISODate());
+
+            // 4. Compare two dates
+            let compareText;
+            if (date1 < date2) {
+                compareText = `${date1.toISODate()} is <strong>before</strong> ${date2.toISODate()}`;
+            } else if (date1 > date2) {
+                compareText = `${date1.toISODate()} is <strong>after</strong> ${date2.toISODate()}`;
+            } else {
+                compareText = "Both dates are the same";
+            }
+            showResult("4️⃣ Date comparison result:", compareText);
+
+            // 5. Time in London
+            const londonTime = DateTime.now().setZone("Europe/London");
+            showResult("5️⃣ Current time in London:", londonTime.toLocaleString(DateTime.TIME_WITH_SECONDS));
+        </script>
+    </body>
+</html>
