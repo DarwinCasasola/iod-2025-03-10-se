@@ -1,0 +1,19 @@
+{
+    "name": "exercise1",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "start-server1": "node server1.js",
+        "start-server2": "node server2.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "express": "^5.1.0"
+    },
+    "devDependencies": {
+        "concurrently": "^9.1.2"
+    }
+}
