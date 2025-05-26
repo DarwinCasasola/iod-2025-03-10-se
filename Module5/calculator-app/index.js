@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const app = express();
 const port = 3000;
 
@@ -8,9 +9,12 @@ const extraRoutes = require("./routes/extraRoutes");
 app.use("/calculator", calculatorRoutes);
 app.use("/extra", extraRoutes);
 
-// Root route
+// Static
+app.use("/", express.static(path.join(__dirname, "public")));
+
+//Route
 app.get("/", (req, res) => {
-    res.send("Welcome to the Calculator API!");
+    res.sendFile(path.join(__dirname, "public", "calculator.html"));
 });
 
 app.listen(port, () => {
