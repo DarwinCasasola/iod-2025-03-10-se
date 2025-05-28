@@ -1,16 +1,14 @@
-const express = require("express"); // import the express package
-const friendRoutes = require("./routes/friendRoutes");
+const express = require("./app");
+const port = 3000;
 
-const app = express(); // create a new app
-const port = 3000; // change this to run the app on a different port - usually a 4 digit number
+const calculatorRoutes = require("./routes/calculatorRoutes");
 
-// parse requests of content-type - application/json (needed for POST and PUT requests using req.body)
-app.use(express.json());
+app.use("/calculator", calculatorRoutes);
 
-app.use("/", express.static("public"));
-app.use("/friends", friendRoutes);
+app.get("/", (req, res) => {
+    res.send("Welcome to the Calculator App!");
+});
 
-// starts the backend app on the given port
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
+    console.log(`Server is running at http://localhost:${port}`);
 });
