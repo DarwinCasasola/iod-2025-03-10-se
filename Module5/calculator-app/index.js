@@ -1,22 +1,16 @@
-const express = require("express");
-const path = require("path");
-const app = express();
-const port = 3000;
+const express = require("express"); // import the express package
+const friendRoutes = require("./routes/friendRoutes");
 
-const calculatorRoutes = require("./routes/calculatorRoutes");
-const extraRoutes = require("./routes/extraRoutes");
+const app = express(); // create a new app
+const port = 3000; // change this to run the app on a different port - usually a 4 digit number
 
-app.use("/calculator", calculatorRoutes);
-app.use("/extra", extraRoutes);
+// parse requests of content-type - application/json (needed for POST and PUT requests using req.body)
+app.use(express.json());
 
-// Static
-app.use("/", express.static(path.join(__dirname, "public")));
+app.use("/", express.static("public"));
+app.use("/friends", friendRoutes);
 
-//Route
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "calculator.html"));
-});
-
+// starts the backend app on the given port
 app.listen(port, () => {
-    console.log(`Calculator app running at http://localhost:${port}`);
+    console.log(`Example app listening at http://localhost:${port}`);
 });
