@@ -1,0 +1,78 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Calculator API",
+        "description": "API for performing basic arithmetic operations",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "Calculator",
+            "description": "API for basic calculator operations"
+        }
+    ],
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+        "/calculator/add": {
+            "get": {
+                "tags": ["Calculator"],
+                "summary": "Add two numbers",
+                "parameters": [
+                    { "name": "num1", "in": "query", "required": true, "type": "number" },
+                    { "name": "num2", "in": "query", "required": true, "type": "number" }
+                ],
+                "responses": {
+                    "200": { "description": "Addition successful" }
+                }
+            }
+        },
+        "/calculator/subtract": {
+            "get": {
+                "tags": ["Calculator"],
+                "summary": "Subtract two numbers",
+                "parameters": [
+                    { "name": "num1", "in": "query", "required": true, "type": "number" },
+                    { "name": "num2", "in": "query", "required": true, "type": "number" }
+                ],
+                "responses": {
+                    "200": { "description": "Subtraction successful" }
+                }
+            }
+        },
+        "/calculator/multiply": {
+            "get": {
+                "tags": ["Calculator"],
+                "summary": "Multiply two numbers",
+                "parameters": [
+                    { "name": "num1", "in": "query", "required": true, "type": "number" },
+                    { "name": "num2", "in": "query", "required": true, "type": "number" }
+                ],
+                "responses": {
+                    "200": { "description": "Multiplication successful" }
+                }
+            }
+        },
+        "/calculator/divide": {
+            "get": {
+                "tags": ["Calculator"],
+                "summary": "Divide two numbers",
+                "parameters": [
+                    { "name": "num1", "in": "query", "required": true, "type": "number" },
+                    { "name": "num2", "in": "query", "required": true, "type": "number" }
+                ],
+                "responses": {
+                    "200": { "description": "Division successful" },
+                    "400": { "description": "Division by zero" }
+                }
+            }
+        }
+    }
+}
