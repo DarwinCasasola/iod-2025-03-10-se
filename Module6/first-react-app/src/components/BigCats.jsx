@@ -1,7 +1,8 @@
 // src/components/BigCats.jsx
 import SingleCat from "./SingleCat";
+import { useState } from "react";
 
-const cats = [
+const originalCats = [
     {
         id: 1,
         name: "Cheetah",
@@ -47,8 +48,35 @@ const cats = [
 ];
 
 function BigCats() {
+    const [cats, setCats] = useState(originalCats);
+
+    const sortAlphabetically = () => {
+        const sorted = [...cats].sort((a, b) => a.name.localeCompare(b.name));
+        setCats(sorted);
+    };
+
+    const reverseList = () => {
+        const reversed = [...cats].reverse();
+        setCats(reversed);
+    };
+
+    const filterPanthera = () => {
+        const filtered = originalCats.filter((cat) => cat.latinName.startsWith("Panthera"));
+        setCats(filtered);
+    };
+
+    const resetList = () => {
+        setCats(originalCats);
+    };
+
     return (
         <div className="BigCats">
+            <div style={{ marginBottom: "1rem" }}>
+                <button onClick={sortAlphabetically}>Sort A–Z</button>
+                <button onClick={reverseList}>Reverse</button>
+                <button onClick={filterPanthera}>Filter Panthera</button>
+                <button onClick={resetList}>Reset</button>
+            </div>
             {cats.map((cat) => (
                 <SingleCat key={cat.id} {...cat} />
             ))}
