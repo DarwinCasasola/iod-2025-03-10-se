@@ -1,10 +1,11 @@
 // src/App.jsx
-import BigCats from "./components/BigCats";
+import Emoji from "./components/Emoji";
 
 function App() {
     return (
         <div className="App">
-            <BigCats />
+            <h1>React Lab 3: Mood Toggle </h1>
+            <Emoji />
         </div>
     );
 }
