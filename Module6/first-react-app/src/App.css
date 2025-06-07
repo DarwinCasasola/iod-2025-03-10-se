@@ -44,3 +44,9 @@
 button {
     margin: 0.25rem;
 }
+
+.AddCatForm input {
+    margin: 0.25rem;
+    padding: 0.5rem;
+    width: 200px;
+}

@@ -4,7 +4,7 @@ import BigCats from "./components/BigCats";
 function App() {
     return (
         <div className="App">
-            <h1>Lab4 BigCat Controls </h1>
+            <h1>Lab5 Add and Delete Big Cats </h1>
             <BigCats />
         </div>
     );

@@ -1,6 +1,7 @@
 // src/components/BigCats.jsx
-import SingleCat from "./SingleCat";
 import { useState } from "react";
+import SingleCat from "./SingleCat";
+import AddCatForm from "./AddCatForm";
 
 const originalCats = [
     {
@@ -50,6 +51,14 @@ const originalCats = [
 function BigCats() {
     const [cats, setCats] = useState(originalCats);
 
+    // -- Logic functions grouped together
+    const addCat = (newCat) => setCats([...cats, newCat]);
+
+    const deleteCat = (id) => {
+        const updatedCats = cats.filter((cat) => cat.id !== id);
+        setCats(updatedCats);
+    };
+
     const sortAlphabetically = () => {
         const sorted = [...cats].sort((a, b) => a.name.localeCompare(b.name));
         setCats(sorted);
@@ -65,20 +74,22 @@ function BigCats() {
         setCats(filtered);
     };
 
-    const resetList = () => {
-        setCats(originalCats);
-    };
+    const resetList = () => setCats(originalCats);
 
+    // -- JSX UI
     return (
         <div className="BigCats">
+            <AddCatForm onAddCat={addCat} />
+
             <div style={{ marginBottom: "1rem" }}>
                 <button onClick={sortAlphabetically}>Sort A–Z</button>
                 <button onClick={reverseList}>Reverse</button>
                 <button onClick={filterPanthera}>Filter Panthera</button>
                 <button onClick={resetList}>Reset</button>
             </div>
+
             {cats.map((cat) => (
-                <SingleCat key={cat.id} {...cat} />
+                <SingleCat key={cat.id} {...cat} onDelete={() => deleteCat(cat.id)} />
             ))}
         </div>
     );
