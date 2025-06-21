@@ -17,7 +17,7 @@ function BitcoinRates() {
 
     return (
         <div className="BitcoinRates componentBox">
-            <h3>Bitcoin Exchange Rate</h3>
+            <h3>Bitcoin Exchange Rate {emoji}</h3>
             <label>
                 Choose currency:
                 <select value={currency} onChange={(e) => setCurrency(e.target.value)}>
