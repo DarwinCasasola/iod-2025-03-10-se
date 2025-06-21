@@ -1,26 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useBitcoinRate } from "../hooks/useBitcoinRate";
+import { useEmojiContext } from "../context/EmojiContext";
 
 const currencies = ["USD", "AUD", "NZD", "GBP", "EUR", "SGD"];
 
 function BitcoinRates() {
     const [currency, setCurrency] = useState(currencies[0]);
-    const [rate, setRate] = useState(null);
-
-    useEffect(() => {
-        let ignore = false;
-
-        fetch(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=${currency}`)
-            .then((res) => res.json())
-            .then((data) => {
-                if (!ignore) {
-                    setRate(data.bitcoin[currency.toLowerCase()]);
-                }
-            });
-
-        return () => {
-            ignore = true; // cleanup to avoid setting state after unmount
-        };
-    }, [currency]);
+    const { rate, loading, error } = useBitcoinRate(currency);
+    const { emoji } = useEmojiContext();
 
     const options = currencies.map((curr) => (
         <option value={curr} key={curr}>
@@ -37,9 +24,14 @@ function BitcoinRates() {
                     {options}
                 </select>
             </label>
-            <div>
-                <strong>Current Price:</strong> {rate ? `${rate} ${currency}` : "Loading..."}
-            </div>
+
+            {loading && <p>Loading...</p>}
+            {error && <p style={{ color: "red" }}>Error: {error}</p>}
+            {rate && !loading && !error && (
+                <div>
+                    <strong>Current Price:</strong> {rate} {currency}
+                </div>
+            )}
         </div>
     );
 }
