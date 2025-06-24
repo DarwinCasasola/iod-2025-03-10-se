@@ -1,49 +1,34 @@
-import { useReducer, useEffect } from "react";
-
-const initialState = {
-    rate: null,
-    loading: true,
-    error: ""
-};
-
-function reducer(state, action) {
-    switch (action.type) {
-        case "FETCH_INIT":
-            return { ...state, loading: true, error: "" };
-        case "FETCH_SUCCESS":
-            return { rate: action.payload, loading: false, error: "" };
-        case "FETCH_ERROR":
-            return { rate: null, loading: false, error: action.payload };
-        default:
-            return state;
-    }
-}
+// src/hooks/useBitcoinRate.js
+import { useState, useEffect } from "react";
 
 export function useBitcoinRate(currency) {
-    const [state, dispatch] = useReducer(reducer, initialState);
+    const [rate, setRate] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
 
     useEffect(() => {
-        let ignore = false;
+        setLoading(true);
+        setError("");
+        setRate(null);
 
-        dispatch({ type: "FETCH_INIT" });
+        // CoinGecko API - No CORS issue, no auth needed
+        const url = `https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=${currency.toLowerCase()}`;
 
-        fetch(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=${currency}`)
-            .then((res) => res.json())
-            .then((data) => {
-                if (!ignore) {
-                    dispatch({ type: "FETCH_SUCCESS", payload: data.bitcoin[currency.toLowerCase()] });
-                }
+        fetch(url)
+            .then((response) => {
+                if (!response.ok) throw new Error("Network response was not ok");
+                return response.json();
             })
-            .catch((err) => {
-                if (!ignore) {
-                    dispatch({ type: "FETCH_ERROR", payload: err.message || "Error fetching data" });
+            .then((data) => {
+                const value = data?.bitcoin?.[currency.toLowerCase()];
+                if (!value) {
+                    throw new Error("Currency not supported or invalid format");
                 }
-            });
-
-        return () => {
-            ignore = true;
-        };
+                setRate(value);
+            })
+            .catch((err) => setError(err.message))
+            .finally(() => setLoading(false));
     }, [currency]);
 
-    return state;
+    return { rate, loading, error };
 }

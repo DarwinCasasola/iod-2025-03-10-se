@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useBitcoinRate } from "../hooks/useBitcoinRate";
 import { useEmojiContext } from "../context/EmojiContext";
 
-const currencies = ["USD", "AUD", "NZD", "GBP", "EUR", "SGD"];
+const currencies = ["USD", "GBP", "EUR"];
 
 function BitcoinRates() {
     const [currency, setCurrency] = useState(currencies[0]);

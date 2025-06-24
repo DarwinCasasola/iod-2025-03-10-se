@@ -1,0 +1,27 @@
+{
+    "time": {
+        "updated": "Jun 18, 2025 16:03:00 UTC",
+        "updatedISO": "2025-06-18T16:03:00+00:00",
+        "updateduk": "Jun 18, 2025 at 17:03 BST"
+    },
+    "bpi": {
+        "USD": {
+            "code": "USD",
+            "rate": "66,000.1234",
+            "description": "United States Dollar",
+            "rate_float": 66000.1234
+        },
+        "GBP": {
+            "code": "GBP",
+            "rate": "51,234.5678",
+            "description": "British Pound Sterling",
+            "rate_float": 51234.5678
+        },
+        "EUR": {
+            "code": "EUR",
+            "rate": "60,789.4321",
+            "description": "Euro",
+            "rate_float": 60789.4321
+        }
+    }
+}
