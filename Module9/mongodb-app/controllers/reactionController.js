@@ -1,16 +1,19 @@
 const Models = require("../models");
 
-const getUsers = (res) => {
-    Models.User.find({})
+const getReactions = (res) => {
+    Models.Reaction.find({})
+        .populate("userId", "username")
+        .populate("postId", "title")
+        .populate("commentId", "content")
         .then((data) => res.status(200).json({ result: 200, data }))
         .catch((err) => res.status(500).json({ result: 500, error: err.message }));
 };
 
-const createUser = (data, res) => {
-    new Models.User(data)
+const createReaction = (data, res) => {
+    new Models.Reaction(data)
         .save()
         .then((data) => res.status(200).json({ result: 200, data }))
         .catch((err) => res.status(500).json({ result: 500, error: err.message }));
 };
 
-module.exports = { getUsers, createUser };
+module.exports = { getReactions, createReaction };
