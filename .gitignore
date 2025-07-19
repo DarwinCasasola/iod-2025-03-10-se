@@ -6,8 +6,8 @@ node_modules/
 PORT=8080
 DB_URI=mongodb://localhost:27017/blogDB
 
-PORT=8081
 DB_NAME=blogDB
 DB_USER=root
-DB_PASSWORD=yourpassword
+DB_PASSWORD=newpassword
 DB_HOST=localhost
+PORT=8082
