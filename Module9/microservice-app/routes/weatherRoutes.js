@@ -2,15 +2,15 @@ const express = require("express");
 const router = express.Router();
 const weatherController = require("../controllers/weatherController");
 
-// Optional welcome message at /api/weather/
+// Optional homepage for /api/weather
 router.get("/", (_req, res) => {
-    res.send("🌦️ Welcome to the Weather API. Use /api/weather/search?city=YourCity");
+    res.send("🌦️ Welcome to the Weather API. Use /api/weather?city=YourCity");
 });
 
-// GET /api/weather/search?city=Miami — using query string
+// Route with query param: /api/weather?city=Miami
 router.get("/search", weatherController.getWeatherByCity);
 
-// GET /api/weather/Miami — using dynamic route param
+// Route with dynamic param: /api/weather/Miami
 router.get("/:city", weatherController.getWeatherByCity);
 
 module.exports = router;

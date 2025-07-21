@@ -1,26 +1,33 @@
 const axios = require("axios");
-require("dotenv").config();
-
-console.log("API_KEY:", API_KEY);
-
 const API_KEY = process.env.API_KEY;
 
-exports.getWeatherByCity = async (req, res) => {
+console.log("API_KEY:", API_KEY); // ✅ This goes AFTER it's declared
+
+const getWeatherByCity = async (req, res) => {
     const city = req.query.city || req.params.city;
-    if (!city) return res.status(400).json({ error: "City is required" });
 
     try {
-        const response = await axios.get(
-            `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
-        );
-        const data = response.data;
+        const response = await axios.get("https://api.openweathermap.org/data/2.5/weather", {
+            params: {
+                q: city,
+                appid: API_KEY,
+                units: "metric"
+            }
+        });
+
+        const { name, main, weather } = response.data;
 
         res.json({
-            city: data.name,
-            temp: data.main.temp,
-            weather: data.weather[0].description
+            city: name,
+            temp: main.temp,
+            weather: weather[0].description
         });
-    } catch (err) {
-        res.status(500).json({ error: "Failed to fetch weather", details: err.message });
+    } catch (error) {
+        res.status(500).json({
+            error: "Failed to fetch weather",
+            details: error.response?.data?.message || error.message
+        });
     }
 };
+
+module.exports = { getWeatherByCity };
