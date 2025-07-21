@@ -6,4 +6,4 @@ const weatherRoutes = require("./routes/weatherRoutes");
 app.use("/api/weather", weatherRoutes);
 
 const PORT = process.env.PORT || 8083;
-app.listen(PORT, () => console.log(`☁️ Weather server running on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(` Weather server running at http://localhost:${PORT}`));
