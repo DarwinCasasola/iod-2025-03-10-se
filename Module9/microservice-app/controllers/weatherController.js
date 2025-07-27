@@ -1,33 +1,27 @@
 const axios = require("axios");
-const API_KEY = process.env.API_KEY;
 
-console.log("API_KEY:", API_KEY); // ✅ This goes AFTER it's declared
-
-const getWeatherByCity = async (req, res) => {
-    const city = req.query.city || req.params.city;
+exports.getWeatherByCity = async (req, res) => {
+    const city = req.params.city || req.query.city;
+    const apiKey = process.env.OPENWEATHER_API_KEY;
 
     try {
-        const response = await axios.get("https://api.openweathermap.org/data/2.5/weather", {
+        const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather`, {
             params: {
                 q: city,
-                appid: API_KEY,
+                appid: apiKey,
                 units: "metric"
             }
         });
 
-        const { name, main, weather } = response.data;
-
         res.json({
-            city: name,
-            temp: main.temp,
-            weather: weather[0].description
+            city: response.data.name,
+            temperature: response.data.main.temp + "°C",
+            description: response.data.weather[0].description
         });
-    } catch (error) {
+    } catch (err) {
         res.status(500).json({
             error: "Failed to fetch weather",
-            details: error.response?.data?.message || error.message
+            details: err.response?.data?.message || err.message
         });
     }
 };
-
-module.exports = { getWeatherByCity };

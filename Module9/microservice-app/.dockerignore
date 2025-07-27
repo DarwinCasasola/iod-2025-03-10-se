@@ -17,3 +17,6 @@ DB_USER=root
 DB_PASSWORD=newpassword
 DB_HOST=localhost
 PORT=8082
+
+
+//https://hub.docker.com/r/darwincasasola/microservice-app
